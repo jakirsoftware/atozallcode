@@ -1,0 +1,24 @@
+.choices {
+  width: 150px !important;
+  max-width: 150px !important;
+}
+
+.choices__inner {
+  height: 35px !important;
+  min-height: 35px !important;
+  line-height: 35px !important;
+  padding: 0 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+}
+
+.choices__item--selectable {
+  line-height: 35px !important;
+}
+
+.choices__list--dropdown .choices__item {
+  font-size: 13px !important;
+  padding: 8px 10px !important;
+}
