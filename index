@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>POS Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    .header, .summary {
+      padding: 10px 15px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-section img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .plan {
+      font-size: 14px;
+      color: #888;
+    }
+
+    /* Marquee Styling */
+    .marquee-box {
+      overflow: hidden;
+      white-space: nowrap;
+      background: #d32f2f;
+      color: white;
+      padding: 8px 0;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      padding-left: 0;
+      animation: marquee-left 15s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes marquee-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+
+    .summary {
+      background: #f9f9f9;
+      border-bottom: 1px solid #eee;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .summary-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .stat h4 {
+      margin: 5px 0 0;
+      color: #000;
+    }
+
+    .stat p {
+      margin: 0;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .grid-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 15px;
+    }
+
+    .button-tile {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+      transition: box-shadow 0.2s, background-color 0.2s;
+    }
+
+    .button-tile:hover {
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      background-color: #f0f0f0;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fafafa;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+
+    .bottom-nav a {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      text-decoration: none;
+    }
+
+    .bottom-nav a.active {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    .bottom-nav a:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-section">
+      <img src="https://via.placeholder.com/40" alt="Logo">
+      <div>
+        <strong>লেডিস কেয়ার</strong><br>
+        <span class="plan">Yearly Plan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-box">
+    <div class="marquee-text">আপনার অ্যাকাউন্টটি সুরক্ষিত রাখতে এখনই PIN সেট করুন!</div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <div class="summary-row">
+      <strong>Today Sale</strong>
+      <select><option>Today</option></select>
+    </div>
+    <div class="summary-stats">
+      <div class="stat"><p>Today Receive</p><h4>৳ 0</h4></div>
+      <div class="stat"><p>Today Due</p><h4>৳ 0</h4></div>
+      <div class="stat"><p>Today Profit</p><h4>৳ 0</h4></div>
+    </div>
+  </div>
+
+  <!-- Menu Buttons -->
+  <div class="grid-buttons">
+    <div class="button-tile"><img src="https://img.icons8.com/office/40/box.png">Product</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/group.png">Customers</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/shopping-cart.png">Purchase</div>
+    <div class="button-tile"><img src="https://img.icons8.com/fluency/48/calculator.png">Sale</div>
+    <div class="button-tile"><img src="https://img.icons8.com/office/40/purchase-order.png">Purchase List</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/sales-performance.png">Sales List</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/combo-chart.png">Reports</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/loss.png">Loss/Profit</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/bill.png">Due List</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/checklist.png">Stock List</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/barcode.png">Barcode</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/ledger.png">Ledger</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/warehouse.png">Warehouse</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/money.png">Income</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/expenses.png">Expense</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/loan.png">Mortgage</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/tax.png">Tax Report</div>
+    <div class="button-tile"><img src="https://img.icons8.com/color/48/conference-call.png">User Role</div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a class="active">🏠<br>Home</a>
+    <a>📊<br>Dashboard</a>
+    <a>🧮<br>Counter</a>
+    <a onclick="fStart('none'); fLogin('block');">⚙️<br>Setting</a>
+  </div>
+
+</body>
+</html>
