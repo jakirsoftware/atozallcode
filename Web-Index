@@ -41,12 +41,13 @@
 
     .button-container {
       position: fixed;
-      top: 20px;
+      bottom: 20px; /* Changed from top to bottom */
       right: 30px;
       display: flex;
       flex-direction: column;
       gap: 15px;
       z-index: 10000;
+      align-items: flex-end; /* Aligns to right */
     }
 
     .button {
@@ -78,10 +79,11 @@
   <!-- Buttons -->
   <div class="button-container">
     <button class="button" onclick="toggleButtons()">☰</button>
-    <button id="b1" class="button button-hidden" onclick="loadHome()">Home</button>
-    <button id="b2" class="button button-hidden" onclick="f2()">Court App</button>
-    <button id="b3" class="button button-hidden" onclick="f3()">Transport</button>
-    <button id="b4" class="button button-hidden" onclick="f4()">Shop1</button>
+    <button id="b1" class="button button-hidden" onclick="loadHome()">AR Jamshed</button>
+    <button id="b2" class="button button-hidden" onclick="f2()">NK Marketing</button>
+    <button id="b3" class="button button-hidden" onclick="f3()">NK Transport</button>
+    <button id="b4" class="button button-hidden" onclick="f4()">NK Shop-2</button>
+    <button id="b5" class="button button-hidden" onclick="f5()">NK Shop-1</button>
   </div>
 
   <!-- Iframe -->
@@ -93,10 +95,11 @@
 
   <!-- Script -->
   <script>
-    const linkHome = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=3";
-    const linkF2   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=2";
-    const linkF3   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=5";
-    const linkF4   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=6";
+    const linkHome = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=11";
+    const linkF2   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=12";
+    const linkF3   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=13";
+    const linkF4   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=14";
+    const linkF5   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=15";
 
     let urlHome = "";
     let buttonsVisible = false;
@@ -149,37 +152,7 @@
 
     function loadHome() {
       hideButtons();
-      loadIframe(urlHome, "Home");
-    }
-
-    function f2() {
-      hideButtons();
-      fetch(linkF2)
-        .then(response => response.text())
-        .then(finalUrl => loadIframe(finalUrl.trim(), "Court App"))
-        .catch(err => {
-          document.body.innerHTML = "❌ Error loading Court App: " + err;
-        });
-    }
-
-    function f3() {
-      hideButtons();
-      fetch(linkF3)
-        .then(response => response.text())
-        .then(finalUrl => loadIframe(finalUrl.trim(), "Transport"))
-        .catch(err => {
-          document.body.innerHTML = "❌ Error loading Transport: " + err;
-        });
-    }
-
-    function f4() {
-      hideButtons();
-      fetch(linkF4)
-        .then(response => response.text())
-        .then(finalUrl => loadIframe(finalUrl.trim(), "Shop1"))
-        .catch(err => {
-          document.body.innerHTML = "❌ Error loading Shop1: " + err;
-        });
+      loadIframe(urlHome, "Jamshed-Admin");
     }
 
     window.onload = () => {
@@ -187,10 +160,50 @@
         .then(response => response.text())
         .then(finalUrl => {
           urlHome = finalUrl.trim();
-          loadIframe(urlHome, "Home");
+          loadIframe(urlHome, "AR Jamshed");
         })
         .catch(err => {
           document.body.innerHTML = "❌ Error loading iframe: " + err;
+        });
+    }
+
+    function f2() {
+      hideButtons();
+      fetch(linkF2)
+        .then(response => response.text())
+        .then(finalUrl => loadIframe(finalUrl.trim(), "NK Marketing"))
+        .catch(err => {
+          document.body.innerHTML = "❌ Error loading NK Marketing: " + err;
+        });
+    }
+
+    function f3() {
+      hideButtons();
+      fetch(linkF3)
+        .then(response => response.text())
+        .then(finalUrl => loadIframe(finalUrl.trim(), "NK Transport"))
+        .catch(err => {
+          document.body.innerHTML = "❌ Error loading NK Transport: " + err;
+        });
+    }
+
+    function f4() {
+      hideButtons();
+      fetch(linkF4)
+        .then(response => response.text())
+        .then(finalUrl => loadIframe(finalUrl.trim(), "NK Shop-2"))
+        .catch(err => {
+          document.body.innerHTML = "❌ Error loading NK Shop-2: " + err;
+        });
+    }
+
+    function f5() {
+      hideButtons();
+      fetch(linkF5)
+        .then(response => response.text())
+        .then(finalUrl => loadIframe(finalUrl.trim(), "NK Shop-1"))
+        .catch(err => {
+          document.body.innerHTML = "❌ Error loading NK Shop-1: " + err;
         });
     };
   </script>
