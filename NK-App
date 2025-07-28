@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NK-App</title>
+  <title>NK-Enterprise</title>
   <link rel="shortcut icon" type="image/png" href="https://jakirsoftware.github.io/Js-iT/Js-iT.png" />
   <style>
     html, body {
@@ -80,6 +80,8 @@
     <button class="button" onclick="toggleButtons()">☰</button>
     <button id="b1" class="button button-hidden" onclick="loadHome()">Home</button>
     <button id="b2" class="button button-hidden" onclick="f2()">Court App</button>
+    <button id="b3" class="button button-hidden" onclick="f3()">Transport</button>
+    <button id="b4" class="button button-hidden" onclick="f4()">Shop1</button>
   </div>
 
   <!-- Iframe -->
@@ -93,6 +95,8 @@
   <script>
     const linkHome = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=3";
     const linkF2   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=2";
+    const linkF3   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=5";
+    const linkF4   = "https://script.google.com/macros/s/AKfycbxUQcOY0Qah3loE5dsEgSzdfUsZCjDkmvnETKMKH5Gwpvi1u9sr4CMuZkG-Tr5t-XQh/exec?id=6";
 
     let urlHome = "";
     let buttonsVisible = false;
@@ -118,9 +122,10 @@
       });
     }
 
-    function loadIframe(url) {
+    function loadIframe(url, titleText) {
       const iframe = document.getElementById('iframe');
       const loader = document.getElementById('loader');
+      document.title = titleText;
       loader.style.display = 'flex';
       iframe.style.display = 'none';
       iframe.src = url;
@@ -144,18 +149,36 @@
 
     function loadHome() {
       hideButtons();
-      loadIframe(urlHome);
+      loadIframe(urlHome, "Home");
     }
 
     function f2() {
       hideButtons();
       fetch(linkF2)
         .then(response => response.text())
-        .then(finalUrl => {
-          loadIframe(finalUrl.trim());
-        })
+        .then(finalUrl => loadIframe(finalUrl.trim(), "Court App"))
         .catch(err => {
           document.body.innerHTML = "❌ Error loading Court App: " + err;
+        });
+    }
+
+    function f3() {
+      hideButtons();
+      fetch(linkF3)
+        .then(response => response.text())
+        .then(finalUrl => loadIframe(finalUrl.trim(), "Transport"))
+        .catch(err => {
+          document.body.innerHTML = "❌ Error loading Transport: " + err;
+        });
+    }
+
+    function f4() {
+      hideButtons();
+      fetch(linkF4)
+        .then(response => response.text())
+        .then(finalUrl => loadIframe(finalUrl.trim(), "Shop1"))
+        .catch(err => {
+          document.body.innerHTML = "❌ Error loading Shop1: " + err;
         });
     }
 
@@ -164,7 +187,7 @@
         .then(response => response.text())
         .then(finalUrl => {
           urlHome = finalUrl.trim();
-          loadIframe(urlHome);
+          loadIframe(urlHome, "Home");
         })
         .catch(err => {
           document.body.innerHTML = "❌ Error loading iframe: " + err;
