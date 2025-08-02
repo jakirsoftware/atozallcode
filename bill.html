@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto Blur Animation</title>
+  <style>
+    .body-bill {
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .img-bill {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      animation: blurPulse-bill 2s ease-in-out infinite;
+    }
+
+    @keyframes blurPulse-bill {
+      0%   { filter: blur(10px); }
+      50%  { filter: blur(0); }
+      100% { filter: blur(10px); }
+    }
+  </style>
+</head>
+<body class="body-bill">
+  <img class="img-bill" src="https://raw.githubusercontent.com/jakirsoftware/atozallcode/refs/heads/main/bill.jpg" alt="Bill Image">
+</body>
+</html>
